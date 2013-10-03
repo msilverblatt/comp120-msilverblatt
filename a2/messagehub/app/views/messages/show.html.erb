@@ -1,2 +1,9 @@
-<h1>Messages#show</h1>
-<p>Find me in app/views/messages/show.html.erb</p>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
+<p>
+	<% if @message != nil %>
+		<%= @message.content %>
+	<% else %>
+		<%= "No message with that ID..." %>
+	<% end %>
+</p>

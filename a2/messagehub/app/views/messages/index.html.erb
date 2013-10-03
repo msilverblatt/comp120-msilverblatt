@@ -1,2 +1,13 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
+<h1>Listing Messages</h1>
+<ul id="message_list">
+    <% @messages.each do |m| %>
+    <li>
+    	<p><%= m.content %></p>
+    	<h8><%= m.username %></h8>
+    	<abbr class="timeago" title= <%= m.created_at.to_s(:db) %> >When?</abbr>
+    </li>
+    <% end %>
+</ul>
+

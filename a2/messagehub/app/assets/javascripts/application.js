@@ -15,3 +15,30 @@
 //= require turbolinks
 //= require_tree .
 //= require rails-timeago
+var last = $("#first").attr("last");
+jQuery(document).ready(function() {
+  jQuery("abbr.timeago").timeago();
+
+});
+
+setInterval(function() {
+  last = $("#first").attr("last");
+  $.ajax({
+   type: "GET",
+   url: "/messagessince.json",
+   dataType: "json",
+   data:  {'id' : last } ,
+   success: function(data){ 
+   	 //$("#log").empty();
+   	 console.log(data);
+   	 for (d in data) {
+   	 	dt = new Date(data[d].created_at);
+   	 	if (data[d].active == true) $(".header").after("<tr><td>"+data[d].content+"</td><td></td><td>"+data[d].username+" </td><td><abbr class='timeago' title='"+dt.toISOString()+"'></abbr></td></tr>");
+
+   	 }
+   	 if (data.length != 0) $("#first").attr("last", data[data.length-1].id);
+//     $(data).appendTo("#first");
+     jQuery("abbr.timeago").timeago();
+   }
+ });
+}, 1000);

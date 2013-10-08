@@ -1,13 +1,25 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<div class="row">
+	<div class="span8 offset2">
+		<div id="log">
+			<h1>Listing Messages</h1>
+			<table class="table table-striped" id="message_list">
+			<div id="first" last="<%= @messages.first.id %>"></div>
+			<tr class="header">
+				<th>Message</th><th></th><th>Username</th><th>Posted</th>
+			</tr>
+			
+    		<% @messages.each do |m| %>
+    			<% if m.active == true %>
+    			<tr>
+    				<td><%= m.content %><td>
+    				<td><%= m.username %></td>
+    				<td><abbr class="timeago" title="<%= m.created_at.to_s().to_time.iso8601 %>" ><%= m.created_at.to_s(:db) %></abbr></td>
+    			</tr>
+    			<% end %>
 
-<h1>Listing Messages</h1>
-<ul id="message_list">
-    <% @messages.each do |m| %>
-    <li>
-    	<p><%= m.content %></p>
-    	<h8><%= m.username %></h8>
-    	<abbr class="timeago" title= <%= m.created_at.to_s(:db) %> >When?</abbr>
-    </li>
-    <% end %>
-</ul>
-
+    		<% end %>
+			
+			</table>
+		</div>
+	</div>
+</div>

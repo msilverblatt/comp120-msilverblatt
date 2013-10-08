@@ -1,6 +1,18 @@
 class MessagesController < ApplicationController
   def index
-  	@messages = Message.all
+  	@messages = Message.order('created_at desc')
+#    respond_to do |format|
+#      format.json { render json: @messages }
+#    end
+  end
+
+  def messagessince
+    @newmessages = Message.order('created_at desc').where("id > ?", params[:id])
+    puts @newmessages.count
+    respond_to do |format| 
+      format.json { render :json => @newmessages }
+
+    end
   end
 
   def create

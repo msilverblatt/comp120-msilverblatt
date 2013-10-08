@@ -1,6 +1,10 @@
 Messagehub::Application.routes.draw do
   resources :messages
   root 'messages#index'
+
+  get 'messagessince/:time' => 'messages#messagessince'
+
+  get 'messagessince/' => 'messages#messagessince'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

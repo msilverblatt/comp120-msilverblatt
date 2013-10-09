@@ -1,7 +1,15 @@
-<p>
+<h1>
 	<% if @message != nil %>
-		<%= @message.content %>
+		<%= @message.username %>
 	<% else %>
 		<%= "No message with that ID..." %>
 	<% end %>
-</p>
+</h1>
+<h5>	<% if @message != nil %>
+		<%= @message.content %>
+
+		<% end %>
+</h5>
+<% if @message != nil %>
+<h6><abbr class="timeago" title="<%= @message.created_at.to_s().to_time.iso8601 %>" ><%= @message.created_at.to_s(:db) %></abbr></td></h6>
+<% end %>

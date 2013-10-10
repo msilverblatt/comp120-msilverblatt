@@ -41,4 +41,4 @@ setInterval(function() {
      jQuery("abbr.timeago").timeago();
    }
  });
-}, 1000);
+}, 30000);

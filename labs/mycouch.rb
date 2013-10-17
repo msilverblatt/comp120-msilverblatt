@@ -7,3 +7,5 @@ database.create_if_missing!
 
 document_one = CouchDB::Document.new database, "_id" => "doc_0", "category" => "one"
 document_one.save
+
+# [-1] Didn't do any exception handling.  Try running it now...
